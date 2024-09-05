@@ -1,85 +1,96 @@
-# Data Scientist Technical Assessment
+# Data Science Assessment - Technology Products Analysis
 
-This repository contains the solutions for the Data Scientist Technical Assessment. The project is structured into three main sections: Data Analysis and Modeling, Machine Learning Development, and Data Visualization and Communication.
+## Introduction
+This project focuses on the data analysis and statistical modeling of a dataset related to various technology products. The process involved cleaning and transforming raw data, conducting exploratory data analysis (EDA), building predictive models, and creating an interactive dashboard for visualization.
 
+The key components of the project include:
+- Data Cleaning and Transformation
+- Exploratory Data Analysis (EDA)
+- Statistical Model Development
+- Model Optimization
+- Data Visualization through an interactive dashboard
 
----
+## Dataset
+The dataset, **Technology Products**, contains information on tech products, including product features, pricing, and customer ratings. The key columns include:
+- `Product_ID`, `Product_Name`, `Category`, `Brand`
+- `Price`, `Units_Sold`, `Customer_Rating`, `Launch_Year`
+- `Processor_Type`, `RAM`, `Storage`, `Battery_Life`, `Operating_System`
+- `Warranty_Period`
 
-## Section 1: Data Analysis and Modeling
+The dataset was used to clean, transform, and develop models throughout the analysis.
 
-### Task 1: Data Cleaning and Transformation
-- **Objective:** Handle missing values, detect and manage outliers, standardize or normalize data, and transform categorical variables into numerical ones.
-- **Code:** The process is documented in `code/SNS Task.ipynb`.
-  
-#### Steps:
-1. **Missing Values:** Identified and handled missing values in critical columns.
-2. **Outlier Detection:** Applied statistical methods to detect and handle outliers.
-3. **Data Normalization:** Standardized features such as `Price` to ensure uniformity.
-4. **Feature Engineering:** Created new features like `Price_per_GB` for more informative analysis.
+### Dataset Link:
+[Original Dataset](https://drive.google.com/file/d/1z0_rR4CGKhLr3C--1kiqiBtBYVdi7k-j/view?usp=drive_link)
 
-- **Deliverable:** The cleaned dataset is available in `data/Cleaned Dataset.csv`.
+## Section 1: Data Cleaning and Transformation
+### 1. Handling Missing Values:
+- Identified missing values using `isnull().sum()`.
+- Applied strategies like removing rows with excessive missing values or imputing using mean/median/mode.
 
-### Task 2: Exploratory Data Analysis (EDA) and Statistical Modeling
-- **Objective:** Perform EDA to visualize relationships and develop a statistical model to predict a target variable.
-- **Code:** Detailed in `code/SNS Task.ipynb`.
+### 2. Outlier Detection and Removal:
+- Used the Interquartile Range (IQR) method to identify and remove outliers.
+- Number of outliers removed: `{Number_of_outliers}`.
 
-#### Steps:
-1. **EDA:** Visualized correlations between `Price`, `Units Sold`, and `Customer Rating`.
-2. **Model Selection:** Chose `Units Sold` as the target variable for a linear regression model.
-3. **Model Development:** Developed the model using features like `Price`, `Category`, and `Brand`.
-4. **Results:** Visualized the relationship between price and sales, and discussed assumptions made for the model.
+### 3. Data Transformation:
+- Converted `Product_ID`, `Launch_Year`, `Warranty_Period` to integers.
+- Created new features: `Success_Rate = Units_Sold * Customer_Rating`.
+- Converted `Success_Rate` into categories: **Successful** and **Not Successful**.
 
----
+### 4. Standardization:
+- Standardized numerical features such as `Price` for consistent model training.
 
-## Section 2: Machine Learning Development
-
-### Task 1: Model Development
-- **Objective:** Select, train, and evaluate a machine learning model.
-- **Code:** Available in `code/SNS Task.ipynb`.
-
-#### Steps:
-1. **Model Selection:** Used Random Forest Regression to predict `Units Sold`.
-2. **Data Split:** Divided the data into 80% training and 20% testing sets.
-3. **Model Training:** Trained the model on the training set.
-4. **Evaluation:** Evaluated using RMSE, which was appropriate for the regression task.
-
-### Task 2: Model Optimization
-- **Objective:** Optimize the selected machine learning model for better performance.
-  
-#### Steps:
-1. **Hyperparameter Tuning:** Applied grid search to optimize the Random Forest model.
-2. **Cross-Validation:** Used cross-validation to validate the model performance.
-3. **Result Comparison:** Improved RMSE compared to the base model.
-
-- **Deliverable:** Optimized model code is included in `code/SNS Task.ipynb`.
+### Cleaned Dataset:
+[Cleaned Dataset](https://drive.google.com/file/d/1JMGtVOBlfMLxeyIm_dgzuz-8vAjOzf9W/view?usp=drive_link)
 
 ---
 
-## Section 3: Data Visualization and Communication
+## Section 2: Statistical Modeling
+### 1. Exploratory Data Analysis (EDA):
+- Analyzed data distribution, relationships between key variables using histograms, boxplots, scatter plots, and correlation matrix.
 
-### Task 1: Visualization Dashboard
-- **Objective:** Create an interactive dashboard using Power BI to present key insights.
-- **File:** The Power BI dashboard can be found in `visualizations/Dashboard.pbix`.
+### 2. Model Development:
+#### Target Variable: 
+- **Units Sold** - Predict the number of units sold based on product attributes.
 
-#### Key Insights:
-- **Sales Performance:** Visualized the distribution of sales across different product categories and brands.
-- **Customer Satisfaction:** Analyzed customer ratings per product and brand, identifying areas for improvement.
-- **Pricing Impact:** Examined how pricing affected unit sales, helping to form pricing strategies.
+#### Model Used: 
+- **Linear Regression** to predict `Units_Sold`.
+- Features: `Price`, `Customer_Rating`, `RAM`, `Storage`, `Warranty_Period`.
 
-### Task 2: Presentation
-- **Objective:** Summarize the entire approach and findings in a 5-minute presentation.
-- **File:** The PowerPoint presentation with speaker notes is available in `presentation/Presentation.pptx`.
+#### Model Performance:
+- RMSE: `{rmse_value}`
+- R-squared: `{r2_value}`
+
+### 3. Model Optimization:
+#### K-Nearest Neighbors (KNN) and Naive Bayes:
+- Two classification models were developed to predict product success (`Success_Category`).
+- Applied feature scaling and hyperparameter tuning to improve performance.
+
+#### Model Comparison:
+- **KNN Accuracy**: `{knn_accuracy}`
+- **Naive Bayes Accuracy**: `{nb_accuracy}`
+
+#### Optimized Performance:
+- **KNN Optimized Accuracy**: `{knn_optimized_accuracy}`
+
+### Model Notebook:
+[Jupyter Notebook](https://drive.google.com/file/d/1DgBnJFxNbQEDmLjtCvNxGLg-4GzP_oOQ/view?usp=drive_link)
 
 ---
 
-## Submission Instructions
-- **GitHub Repository:** Ensure that all files are included in the repository.
-- **Google Drive:** The cleaned dataset, models, dashboard, and presentation have been submitted via the Google Drive link.
+## Section 3: Data Visualization - Interactive Dashboard
+An interactive dashboard was created using **Power BI** to present insights in an easily understandable format for non-technical stakeholders. 
+
+### Key Insights:
+1. **Sales Performance**: Sales distribution by product category and brand.
+2. **Customer Satisfaction**: Analyzed customer ratings and product feedback.
+3. **Pricing Impact**: The correlation between pricing strategies and units sold.
+4. **Yearly Trends**: Time-series analysis of sales trends and product launches.
+5. **Operational Metrics**: Warranty claims and battery life analysis.
+
+### Dashboard Link:
+[Power BI Dashboard](https://drive.google.com/file/d/1cIgyeiUkl_ynlu6aSyoP4vF-bCsdjXoM/view?usp=drive_link)
 
 ---
 
-## Contact Information
-For any queries regarding this assessment, please contact [Your Email].
-
-
-
+## Conclusion
+The project demonstrates the end-to-end process of data cleaning, EDA, model development, and visualization using a real-world dataset. The findings provide valuable insights into product performance, customer satisfaction, and business strategy optimization.
